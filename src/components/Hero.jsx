@@ -15,13 +15,13 @@ export default function Hero() {
     mouseY.set(e.clientY - rect.top);
   };
 
-  const maskImage = useMotionTemplate`radial-gradient(160px 160px at ${mouseX}px ${mouseY}px, rgba(251,191,36,0.35), transparent 60%)`;
+  const maskImage = useMotionTemplate`radial-gradient(160px 160px at ${mouseX}px ${mouseY}px, rgba(168,85,247,0.35), transparent 60%)`;
 
   return (
     <section className="relative overflow-hidden">
       {/* Ambient background and grid - never block interaction */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.12),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.12),transparent_55%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,transparent,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:32px_32px] opacity-15" />
       </div>
 
@@ -35,10 +35,10 @@ export default function Hero() {
               className="pointer-events-none absolute inset-0 rounded-3xl"
               style={{ WebkitMaskImage: maskImage, maskImage }}
             >
-              <div className="absolute inset-0 rounded-3xl bg-amber-400/20 blur-2xl" />
+              <div className="absolute inset-0 rounded-3xl bg-fuchsia-400/20 blur-2xl" />
             </motion.div>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 text-amber-200/90 text-xs backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-fuchsia-400/30 bg-fuchsia-500/10 px-3 py-1 text-fuchsia-200/90 text-xs backdrop-blur">
               Futuristic RTD Coffee
             </div>
             <motion.h1
@@ -60,16 +60,16 @@ export default function Hero() {
 
             {/* Bullets */}
             <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-zinc-300/90">
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> 12g craft blend, ethically sourced</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> No equipment, zero cleanup</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Shelf-stable, fresh-lock seal</li>
-              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Rapid caffeine, smooth flavor</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> 12g craft blend, ethically sourced</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> No equipment, zero cleanup</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> Shelf-stable, fresh-lock seal</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> Rapid caffeine, smooth flavor</li>
             </ul>
 
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <a
                 href="#pricing"
-                className="group inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-medium text-zinc-900 shadow-lg shadow-amber-500/30 transition hover:-translate-y-0.5 hover:shadow-amber-400/40"
+                className="group inline-flex items-center justify-center rounded-full bg-fuchsia-500 px-5 py-3 text-sm font-medium text-zinc-900 shadow-lg shadow-fuchsia-500/30 transition hover:-translate-y-0.5 hover:shadow-fuchsia-400/40"
               >
                 Pre-order Now
                 <span className="ml-2 inline-block transition-transform group-hover:translate-x-0.5">→</span>
@@ -82,23 +82,27 @@ export default function Hero() {
               </a>
             </div>
 
-            <p className="mt-3 text-amber-200/80 text-sm">Tagline: Squeeze. Sip. Go.</p>
+            <p className="mt-3 text-fuchsia-200/80 text-sm">Tagline: Squeeze. Sip. Go.</p>
           </div>
 
           {/* Interactive Spline scene */}
-          <div className="relative h-[420px] md:h-[520px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-orange-400/20 via-orange-500/15 to-amber-300/10">
+          <motion.div
+            className="relative h-[420px] md:h-[560px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-fuchsia-500/10 via-purple-600/10 to-indigo-500/10"
+            whileHover={{ y: -4 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+          >
             {/* Interaction-safe overlays */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(255,255,255,0.35),transparent_40%)]" />
-            <div className="pointer-events-none absolute -bottom-20 -right-10 h-56 w-56 rounded-full bg-orange-400/25 blur-3xl opacity-60" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(255,255,255,0.25),transparent_40%)]" />
+            <div className="pointer-events-none absolute -bottom-20 -right-10 h-56 w-56 rounded-full bg-fuchsia-400/25 blur-3xl opacity-60" />
 
             {/* Spline must fill container and remain interactive */}
-            <Spline scene="https://prod.spline.design/rwKT-aWtlkdY-8UV/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+            <Spline scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode" style={{ width: '100%', height: '100%' }} />
 
             {/* Subtle label */}
             <div className="pointer-events-none absolute left-3 top-3 text-[10px] uppercase tracking-wider text-white/70 bg-black/20 px-2 py-1 rounded-full backdrop-blur">
               Interactive — try moving your cursor
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
