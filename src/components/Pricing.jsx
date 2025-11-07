@@ -1,23 +1,27 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Pricing() {
   const plans = [
     {
       name: 'Starter Box',
       price: '₹99',
-      subtitle: '12 sachets',
+      subtitle: '12 sachets — try every flavor',
+      features: ['3 flavors x 4 each', 'Ships in 48 hours', 'Happiness guarantee'],
       highlight: false,
     },
     {
       name: 'Office Pack',
       price: '₹349/month',
-      subtitle: '4 boxes',
+      subtitle: '4 boxes — refill subscription',
+      features: ['48 sachets/month', 'Wholesale pricing', 'Pause or cancel anytime'],
       highlight: true,
     },
     {
       name: 'Subscription',
       price: 'Save 15%',
-      subtitle: 'Monthly delivery',
+      subtitle: 'Monthly delivery — your way',
+      features: ['Pick your mix', 'Free shipping', 'Early access to drops'],
       highlight: false,
     },
   ];
@@ -30,24 +34,33 @@ export default function Pricing() {
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
           {plans.map((p, i) => (
-            <div
+            <motion.div
               key={i}
-              className={`relative rounded-2xl border bg-white/5 p-6 backdrop-blur-md transition ${
+              className={`relative rounded-2xl border bg-white/5 p-6 backdrop-blur-md ${
                 p.highlight
                   ? 'border-amber-400/40 shadow-lg shadow-amber-500/20'
                   : 'border-white/10'
               }`}
+              whileHover={{ y: -6 }}
+              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
             >
               <h3 className="text-white text-lg font-medium">{p.name}</h3>
               <div className="mt-3 text-3xl font-semibold text-amber-300">{p.price}</div>
               <p className="text-zinc-400 text-sm">{p.subtitle}</p>
+              <ul className="mt-4 space-y-1.5 text-sm text-zinc-300/90">
+                {p.features.map((f, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> {f}
+                  </li>
+                ))}
+              </ul>
               <a
                 href="#contact"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-zinc-900 shadow-lg shadow-amber-500/30 transition hover:-translate-y-0.5"
               >
                 Pre-order
               </a>
-            </div>
+            </motion.div>
           ))}
         </div>
 
